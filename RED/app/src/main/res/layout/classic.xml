@@ -1,0 +1,168 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/primary_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/holo_red_dark"
+    tools:context=".Classic">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="40dp">
+
+        <EditText
+            android:id="@+id/plain_cipher_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:hint="Enter Plain/Cipher Text"
+            android:maxLines="1"
+            android:scrollHorizontally="true"
+            android:singleLine="true"
+            android:textColorHint="@android:color/white" />
+
+        <EditText
+            android:id="@+id/key_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/plain_cipher_text"
+            android:layout_marginTop="10dp"
+            android:hint="Enter Number"
+            android:inputType="number"
+            android:maxLines="1"
+            android:scrollHorizontally="true"
+            android:singleLine="true"
+            android:textColorHint="@android:color/white" />
+
+        <LinearLayout
+            android:id="@+id/radio_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/key_text"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp">
+
+            <RadioGroup
+                android:id="@+id/radio_group"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/caesar_cipher_radio_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:checked="true"
+                    android:onClick="radioButtonCaesarCipher"
+                    android:text="Caesar Cipher" />
+
+                <RadioButton
+                    android:id="@+id/vigenere_radio_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:checked="false"
+                    android:onClick="radioButtonVigenere"
+                    android:text="Vigenere" />
+            </RadioGroup>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/result_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/radio_button"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="5dp"
+            android:text="Result :"
+            android:textColor="@android:color/white"
+            android:textSize="18sp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/radio_button">
+
+            <Button
+                android:id="@+id/toKeyText"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_marginTop="5dp"
+                android:background="@android:color/holo_orange_dark"
+                android:onClick="toKeyText"
+                android:paddingLeft="6dp"
+                android:paddingRight="6dp"
+                android:text="toKeyText()"
+                android:textColor="@android:color/white"
+                android:textSize="13sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/toPlainText"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_marginTop="5dp"
+                android:background="@android:color/holo_blue_dark"
+                android:onClick="toPlainText"
+                android:paddingLeft="6dp"
+                android:paddingRight="6dp"
+                android:text="toPlainText()"
+                android:textColor="@android:color/white"
+                android:textSize="13sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/result_text"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/result_label"
+            android:layout_marginTop="5dp"
+            android:background="@android:color/white"
+            android:paddingLeft="15dp"
+            android:paddingTop="5dp"
+            android:textColor="@android:color/holo_red_dark"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true">
+
+        <LinearLayout
+            android:id="@+id/cryption_controls"
+            style="?metaButtonBarStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center_horizontal"
+            android:background="@color/black_overlay"
+            android:orientation="horizontal"
+            tools:ignore="UselessParent">
+
+            <Button
+                android:id="@+id/encrypt_button"
+                style="?metaButtonBarButtonStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="encryptButton"
+                android:text="@string/encrypt_button" />
+
+            <Button
+                android:id="@+id/decrypt_button"
+                style="?metaButtonBarButtonStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="decryptButton"
+                android:text="@string/decrypt_button" />
+
+        </LinearLayout>
+    </FrameLayout>
+</FrameLayout>

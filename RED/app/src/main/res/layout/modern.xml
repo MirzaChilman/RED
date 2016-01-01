@@ -1,0 +1,190 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/primary_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/holo_red_dark"
+    tools:context=".Modern">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="40dp">
+
+        <LinearLayout
+            android:id="@+id/plain_cipher_text_menu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@id/plain_cipher_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_weight="4"
+                android:hint="Enter Plain/Cipher Text"
+                android:maxLines="1"
+                android:scrollHorizontally="true"
+                android:singleLine="true"
+                android:textColorHint="@android:color/white" />
+
+            <Button
+                android:id="@+id/search_file"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="10dp"
+                android:layout_weight="10"
+                android:onClick="searchFile"
+                android:text="Search" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/key_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/plain_cipher_text_menu"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/key_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_weight="4"
+                android:hint="Enter Key"
+                android:maxLines="1"
+                android:scrollHorizontally="true"
+                android:singleLine="true"
+                android:textColorHint="@android:color/white" />
+
+            <Button
+                android:id="@+id/save_file"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="10dp"
+                android:layout_weight="10"
+                android:onClick="saveFile"
+                android:text="Save" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/block_shift_area"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/key_layout"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/block_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/key_text"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:hint="Block Length"
+                android:inputType="number"
+                android:maxLines="1"
+                android:scrollHorizontally="true"
+                android:singleLine="true"
+                android:textColorHint="@android:color/white"
+                android:visibility="visible" />
+
+            <EditText
+                android:id="@+id/shift_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:hint="Shift Length"
+                android:inputType="number"
+                android:maxLines="1"
+                android:scrollHorizontally="true"
+                android:singleLine="true"
+                android:textColorHint="@android:color/white"
+                android:visibility="visible" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/result_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/block_shift_area"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="5dp"
+            android:text="Result :"
+            android:textColor="@android:color/white"
+            android:textSize="18sp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/block_shift_area"
+            android:visibility="visible">
+
+            <Button
+                android:id="@+id/toPlainText"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_marginTop="5dp"
+                android:background="@android:color/holo_blue_dark"
+                android:onClick="toPlainText"
+                android:paddingLeft="6dp"
+                android:paddingRight="6dp"
+                android:text="toPlainText()"
+                android:textColor="@android:color/white"
+                android:textSize="13sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/result_text"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/result_label"
+            android:layout_marginTop="5dp"
+            android:background="@android:color/white"
+            android:paddingLeft="15dp"
+            android:paddingTop="5dp"
+            android:textColor="@android:color/holo_red_dark"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true">
+
+        <LinearLayout
+            android:id="@+id/cryption_controls"
+            style="?metaButtonBarStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center_horizontal"
+            android:background="@color/black_overlay"
+            android:orientation="horizontal"
+            tools:ignore="UselessParent">
+
+            <Button
+                android:id="@+id/encrypt_button"
+                style="?metaButtonBarButtonStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="encryptButton"
+                android:text="@string/encrypt_button" />
+
+            <Button
+                android:id="@+id/decrypt_button"
+                style="?metaButtonBarButtonStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="decryptButton"
+                android:text="@string/decrypt_button"
+                android:visibility="visible" />
+
+        </LinearLayout>
+    </FrameLayout>
+</FrameLayout>
